@@ -1,0 +1,142 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>项目-openstack</title>
+  <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <link rel="stylesheet" href="{% static 'icheck/minimal/red.css' %}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">Openstack</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">用户列表</a></li>
+      <li class="layui-nav-item"><a href="">会员列表</a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a >控制台</a></li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">项目</a>
+          <dl class="layui-nav-child">
+            <dd><a href="{% url 'Sl' %}">实例</a></dd>
+          </dl>
+          <dl class="layui-nav-child">
+            <dd><a href="sysConfig.html">映像</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">身份管理</a>
+          <dl class="layui-nav-child">
+            <dd><a  href="{% url 'Project' %}">项目</a></dd>
+          </dl>
+          <dl class="layui-nav-child">
+            <dd><a  href="{% url 'User' %}">用户</a></dd>
+          </dl>
+          <dl class="layui-nav-child">
+            <dd><a  href="{% url 'Group' %}">组</a></dd>
+          </dl>
+          <dl class="layui-nav-child">
+            <dd><a  href="{% url 'Role' %}">角色</a></dd>
+          </dl>
+        </li>                    
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field">
+            <legend>项目</legend>
+            <div class="layui-field-box">
+              
+              <hr>
+              <div class="layui-btn-group">
+                  <button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="../Createproject" dw-title="新增用户" dw-width="100%" dw-height="100%">
+                      <i class="layui-btn layui-btn-xs layui-btn-normal dw-dailog">&#xe654;</i>新增
+                  </button>
+                  
+              </div>
+              <hr>
+              <table class="layui-table">
+                  <colgroup>
+                      <col width="150">
+                      <col width="150">
+                      <col width="200">
+                      <col>
+                      <col>
+                  </colgroup>
+                  <thead>
+                      <tr>
+                      <th class="selectAll"><input type="checkbox"></th>
+                      <th>名称</th>
+                      
+                      <th>id</th>
+                      <th>域名</th>
+                      <th style="text-align:center;">操作</th>
+                      </tr> 
+                  </thead>
+                  <tbody>
+                  {% for i in roles %}
+                      <tr>
+                      <td><input type="checkbox" name="id" value="1"></td>
+                      <td>{{i.name}}</td>
+                      
+                      <td>{{i.id}}</td>
+                      <td>default</td>
+                      <td class="text-center">
+                        <div class="layui-btn-group">
+                          <button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="../Bj?id={{ i.id }}" dw-title="编辑用户">
+                            <i class="layui-icon">&#xe642;</i>编辑
+                          </button>
+                          <button class="layui-btn layui-btn-xs layui-btn-danger dw-delete" dw-url="../Del?id={{ i.id }}" dw-title="{{i.name}}">
+                            <i class="layui-icon">&#xe640;</i>删除
+                          </button>
+                        </div>
+                      </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+            </div>
+        </fieldset>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script type="text/javascript" src="{% static 'javascript/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+<script type="text/javascript" src="{% static 'icheck/icheck.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/dw.js' %}"></script>
+</body>
+</html>

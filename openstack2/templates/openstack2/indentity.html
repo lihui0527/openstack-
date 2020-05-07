@@ -1,0 +1,50 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table align="center" border="1">
+    <form action="" method="post" enctype="multipart/form-data">
+        <h1 align="center">项目</h1>
+        <tr>
+            <td width="200" align="right">
+               名称
+            </td>
+            <td width="200">
+                描述
+            </td>
+            <td width="200">
+                标志
+            </td>
+            <td width="200">
+                域名
+            </td>
+             <td width="200">
+                操作
+            </td>
+        </tr>
+        {% for i in projects %}
+        <tr>
+
+            <td>{{i.name}}</td>
+            <td>
+                {{i.description}}
+            </td>
+           <td>{{i.id}}</td>
+           <td>default</td>
+
+            <td><a href="../Del?id={{ i.id }}">删除</a></td>
+
+        <tr>
+        {% endfor %}
+
+    </tr>
+    </form>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+</head>
+<div class="layui-container">  
+    <div class="layui-row">
+        <div class="layui-col-lg12">
+            <fieldset class="layui-elem-field">
+                <legend>新建项目</legend>
+                <div class="layui-field-box">
+                {% for i in servers %}
+                    <form class="layui-form" action="{% url 'slbj' %}" method="post" enctype="multipart/form-data">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">名称</label>
+                            <div class="layui-input-block">
+                            <input type="text" name="name" required  lay-verify="required" value="{{i.name}}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标志</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="id"  value="{{i.id}}" readonly="readonly" autocomplete="off" class="layui-input">
+                        </div>     
+                                                                                                                     
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" type="submit" lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                    {% endfor %}
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{% static 'javascript/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/dw_form_submit.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'myblogs/base.html' %}
+{% block title %}{{post.title}}{% endblock %}
+{% block headmessage %}
+   <h3 style='font-family:楷体;'>{{post.title}}</h3>
+   <a href='/myblogs/'>返回首页</a>
+{% endblock %}
+{% block content %}
+        <p style='font-family:微软雅黑;font-size:12pt;letter-spacing:2pt;'> 
+            <a>{{post.body}}</a>
+        </p>
+{% endblock %}

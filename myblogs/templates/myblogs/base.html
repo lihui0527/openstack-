@@ -1,0 +1,48 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+{% block title%}{% endblock%}
+</title>
+<link rel="stylesheet" href="{% static 'myblogs/css/my.css' %}">
+</head>
+<body>
+<div class='container-fluid'>
+{% include 'myblogs/header.html' %}
+<div class='row'>
+<div class='col-sm-4 col-md-4'>
+<div class='panel panel-default'>
+<div class='panel-heading'>
+<h3>导航</h3>
+</div>
+<div class='panel-body'>
+<div class='list-group'>
+<a href='/myblogs' class='list-group-item'>我的首页</a>
+<a href='/admin' class='list-group-item'>管理页面</a>
+<a href='/others' class='list-group-item'>我的相册</a>
+<a href='/more' class='list-group-item'>推荐文章</a>
+</div>
+</div>
+</div>
+</div>
+<div class='col-sm-8 col-md-8'>
+<div class='panel panel-default'>
+<div class='panel-heading'>
+{% block headmessage %}{% endblock %}
+</div>
+<div class='panel-body'>
+    {% block content %}{% endblock %}
+</div>
+<div class='panel-footer'>
+    {% include 'myblogs/footer.html' %}
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
